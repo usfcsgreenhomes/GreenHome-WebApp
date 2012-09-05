@@ -1,0 +1,1058 @@
+			body
+                        {
+                            font-family: "Trebuchet MS", sans-serif;
+                            padding: 0;
+                            margin: 0;
+			    overflow-x: hidden;
+    			    background-image:url('http://www.comedysoftware.com/black/images/bottom_fill.png');
+                            /*background-size: 42px;*/
+                            background-repeat: repeat;
+                        }
+                        
+			tr, td, img {
+			padding: 0;
+			margin: 0;
+			border: 0;
+			}
+			
+                        .fullContainer
+			{
+			    width: 100%;
+			}
+			
+                        .appContainer
+                        {
+                            width: 988px; position: relative;
+                            padding: 0;
+                            margin: 0px auto;
+                        }
+			
+		    /* LOADING SCREEN */
+		    
+			.loadingTop
+			{
+			    width: 100%;
+			    height: 100%;
+			    position: absolute;
+			    z-index: 30;
+			    opacity: 0;
+			    visibility:hidden;
+			}
+
+			.loadingTop img 
+			{
+			    position:absolute;
+			    top: 50px;
+			    left: 772px;
+			}
+                    
+		    /* CURTAINS */
+		    
+		    
+		    
+			#curtainLeft {
+			    height: 405px;
+			    position: absolute;
+			    top: 68px;
+			    right: 1050px;
+			    z-index: 10;
+			    width: 2200px;
+
+			}
+			
+			#curtainArrowLeft {
+			    display: block;
+			    position: absolute;
+			    right: 10px;
+			    top: 186px;
+			    width: 23px;
+			    height: 23px;
+			    background: url('../../assets/img/leftCurtainArrow.png') bottom;
+			    text-indent: -99999px;
+			}
+			#curtainArrowLeft:hover {
+			    background-position: 0 0;
+			}
+			
+			#curtainLeft-InnerRight {
+			    
+			    position: absolute;
+			    right: 0px;
+			    width: 10px;
+			    height: 405px;
+			    
+			    background-image:url('http://www.comedysoftware.com/black/images/curtainLeftRepeat.png');
+			    background-size: 10px;
+			    background-repeat: repeat-y;
+			    /*background-color: #FFFFFF;*/
+			}
+    			#curtainLeft-InnerLeft {
+			    
+			    position: absolute;
+			    right: 10px;
+			    width: 2190px;
+			    height: 405px;
+			    background-image:url('http://www.comedysoftware.com/black/images/curtainFill.png');
+			    background-repeat: repeat;
+			    
+			}
+			
+			#curtainRight {
+			    height: 405px;
+			    position: absolute;
+			    top: 68px;
+			    left: 1050px;
+			    z-index: 10;
+			    width: 2200px;
+			    
+			}
+		    
+		    	#curtainArrowRight {
+			    display: block;
+			    position: absolute;
+			    left: 10px;
+			    top: 186px;
+			    width: 23px;
+			    height: 23px;
+			    background: url('../../assets/img/rightCurtainArrow.png') bottom;
+			    text-indent: -99999px;
+			}
+			#curtainArrowRight:hover {
+			background-position: 0 0;
+			}
+			
+			#curtainRight-InnerRight {
+			    
+			    position: absolute;
+			    left: 0px;
+			    width: 10px;
+			    height: 405px;
+			    
+			    background-image:url('http://www.comedysoftware.com/black/images/curtainRightRepeat.png');
+			    background-size: 10px;
+			    background-repeat: repeat-y;
+			    
+			}
+    			#curtainRight-InnerLeft {
+			    
+			    position: absolute;
+			    left: 10px;
+			    width: 2190px;
+			    height: 405px;
+			    background-image:url('http://www.comedysoftware.com/black/images/curtainFill.png');
+			    background-repeat: repeat;
+			    
+			}
+		    
+		    /*BACKGROUND IMAGES, TOP AND MID*/
+                        #back_top
+                        {
+                            position:absolute;
+                            top:0px;
+                            width: 100%;
+                            height: 68px;
+                            z-index: -1;
+                            background-image:url('http://www.comedysoftware.com/black/images/top_fill.png');
+                            background-size: 7px;  /* prevents stretching in some browsers */
+                            background-repeat: repeat-x;
+                        }
+                        #back_mid
+                        {
+                            position:absolute;
+                            top:68px;
+                            width: 100%;
+                            height: 405px;
+                            z-index: -1;
+                            background-image:url('http://www.comedysoftware.com/black/images/panel_fill.png');
+                            background-size: 42px;
+                            background-repeat: repeat-x;
+                        }
+                        #back_bot
+                        {
+                            position:absolute;
+                            /*top:69px;*/
+                            width: 100%;
+                            height: 800px;
+                            z-index: -2;
+
+                        }
+			
+                    /*NON-REPEATING ASSETS LIKE TOP_BAR AND BOTTOM_WIDGETS*/
+                        #top_bar
+                        {
+                            position:absolute;
+                            top:0px;
+                            right:0px;
+                            width: 987px;
+                            height: 83px;
+                            z-index: 0;
+                            background-image:url('http://www.comedysoftware.com/black/images/top_bar_w_green2.png');
+                            background-size: 987px;
+                            background-repeat: no-repeat;
+                        }                            
+			
+                        #bot_widgets
+                        {
+                            position:absolute;
+                            top:466px;
+                            left:10px;
+                            width: 100%;
+                            height: 238px;
+                            z-index: 0;
+                            /*background-image:url('http://www.comedysoftware.com/black/images/bottom_widgetarea.png');*/
+                            background-size: 969px;
+                            background-repeat: no-repeat;
+                            
+                        }
+			#bot_widgets_cover
+			{
+			    position:absolute;
+                            top:466px;
+                            left:10px;
+                            width: 100%;
+                            height: 238px;
+                            z-index: 3;
+                            background-image:url('http://www.comedysoftware.com/black/images/bottom_widgetarea.png');
+                            background-size: 969px;
+                            background-repeat: no-repeat;
+			}
+			
+			#actContainer
+			{
+			    position: absolute;
+			    top: 90px;
+			    left: 45px;
+                        }
+			
+		    /* HOME DATA VIEW */
+		    	
+			
+			#statusView, #homeDataView, #statsDataView
+			{
+			    position: absolute;
+			    left: 30px;
+			    top: 22px;
+			    color: #C3C3C3;
+			    overflow: hidden;
+			    max-height: 220px;
+			    width: 675px;
+			    height: 240px;
+			}
+			/* STATS CONSOLE */
+			    #statsDataView {
+				opacity: 0;
+				z-index: -11;
+			    }
+			
+			    #auto_correlation, #cross_correlation {
+				padding-top: 6px;
+				color: #F6F6F6;
+				
+				
+			    }
+			    
+			    #comparedSeriesDialog, #Auto-comparedSeriesDialog {
+				width: 900px;
+			    }
+
+			    #cross-correlation-box
+			    {
+				position: absolute;
+				top: 8px;
+				left: 8px;
+				height: 177px;
+				max-height: 177px;
+				width: 317px;
+				/*background-color: green;*/
+				
+				/*margin: 8px;*/
+				
+				z-index: 10;
+			    }
+			    #auto-correlation-box
+			    {
+				position: absolute;
+				top: 8px;
+				left: 342px;
+				height: 177px;
+				max-height: 177px;
+				width: 317px;
+				/*background-color: green;*/
+				
+				/*margin: 8px;*/
+				
+				z-index: 10;
+			    }
+			    
+			    .updatingalert {
+				position:relative;
+				left: 15px;
+				padding: 5px;
+				width: 151px;
+				
+			    }
+			    
+			    #updatingstats
+			    {
+				padding:5px;
+			    }
+			
+			.selected-controls
+			{
+			    background-image: url('../../assets/img/bright-background.png');
+			    background-repeat: repeat;
+			    border: 4px solid rgba(0, 0, 0, 0.2);
+			    color: #F8F8F8;
+			    /*border: 3px solid rgb(40,40,40);*/
+			}
+		    
+		    	.unselected-controls
+			{
+			    background-image: url('../../assets/img/fade-background.png');
+			    background-repeat: repeat;
+			    color: #B3B3B3;
+			    /*border: 3px solid rgb(40,40,40);*/
+			}
+		    
+			#home-container
+			{
+			    position:absolute;
+			    top: 0px;
+			    width: 675px;
+			    height: 200px;
+			    line-height: 25px;
+			    font-size: 15px;
+			}
+			
+			#controls-background, #stats-background
+			{
+			    background-color: #000000;
+			    opacity: .1;
+			    
+			    position: absolute;
+			    top: 0px;
+			    
+			    height: 200px;
+			    width: 100%;
+			    
+			    
+			    z-index: 2;
+			}
+		    
+			.lightbox
+			{
+			    
+			    -moz-background-clip: padding;
+			    -webkit-background-clip: padding;
+			    background-clip: padding-box;
+			    border: 4px solid rgba(0, 0, 0, 0.1);
+			    -webkit-border-radius: 0px;
+			    -moz-border-radius: 0px;
+			    border-radius: 0px;
+			    padding: 0px;
+			}
+		    
+			.inner-content
+			{
+			    
+			    padding-left: 12px;
+			    padding-right: 12px;
+
+			}
+		    
+			#home-controls-box
+			{
+			    position: absolute;
+			    top: 8px;
+			    left: 8px;
+			    height: 77px;
+			    min-height: 77px;
+			    width: 293px;
+			    /*background-color: green;*/
+			    
+			    /*margin: 8px;*/
+			    
+			    z-index: 10;
+			}
+		    
+			#battery-controls-box
+			{
+			    position: absolute;
+			    top: 100px;
+			    height: 77px;
+			    min-height: 77px;
+			    width: 293px;
+			    
+			    /*background-color: blue;*/
+			    
+			    left: 8px;
+			    
+			    /*margin-left: 8px;
+			    
+			    margin-top: 5px;
+			    */
+			    z-index: 10;
+			}
+		    
+			.graphs-bottom {
+			    position:absolute;
+			    top: 10px;
+			    right: 6px;
+			    width: 335px;
+			    height: 184px;
+			    
+			    /*
+			    background-image: url('../../assets/img/fade-background-lighter.png');
+			    background-repeat: repeat;
+			    */
+			}
+		    
+			#battery-graph
+			{
+			    
+			    z-index: -1;
+			    opacity:0;
+			}
+		    
+			#home-graph
+			{
+
+
+			    
+			}
+		    
+			
+                    /*SIDEBAR WITH ITS TOP,BOT IMGS; REPEATING BCK_IMG; AND JQUERY-ENABLED HTML*/
+                        
+			/*.sidebar_back
+                        {
+                            position:absolute;
+                            top:81px;
+                            left:715px;
+                            width: 274px;
+                            height: 609px;
+                            z-index: 1;
+
+                        }*/
+
+			#ghost-right{
+			    opacity: 0;
+			}
+
+			#ghost-right:hover{
+			    opacity: .7;
+			}
+			
+			#ghost-left{
+			    opacity: 0;
+			}
+
+			#ghost-left:hover{
+			    opacity: .7;
+			}
+
+			#sidebar
+                        {
+                            position:absolute;
+                            top:68px;
+                            left:714px;
+                            width: 274px;
+                            height: 633px;
+                            z-index: 4;
+			    background-image:url('http://www.comedysoftware.com/black/images/sidebar_vfill.png');
+                            background-size: 274px;
+                            background-repeat: repeat-y;
+                        }
+			
+			#accordion 
+                        {
+                            position: absolute;
+                            top: 22px;
+			    width: 202px;
+			    left: 37px;
+			    max-height: 482px;
+			    overflow-y: auto;
+			    overflow-x: hidden;
+			    
+			    opacity: 0;
+			    z-index: -1;
+                        }
+			
+			#customGraphView, #insightsView
+			{
+			    position: absolute;
+			    top: 30px;
+			    left: 42px;
+			    opacity: 0;
+			    z-index:-1;
+			}
+			
+			#customGraphOptions, #insightsView
+			{
+                            position: absolute;
+                            top: 28px;
+			    width: 202px;
+			    left: 37px;
+			    max-height: 452px;
+			    overflow-y: auto;
+			    overflow-x: hidden;
+			    
+			    opacity: 0;
+			    z-index: -1;
+                        }
+			
+			.panel_buttons
+			{
+				position: absolute;
+				bottom: 30px;
+				width: 100%;
+				text-align: center;
+				padding-right: 2px;
+				left: 60px;
+			}
+			
+			.OnloadButtons, .CustomGraphButtons, .DeviceCenterButtons, .ReturnHomeButtons, .InsightsButtons
+			{
+			    position: absolute;
+			    bottom: 0px;
+			    left: 0px;
+			    opacity: 0;
+			    z-index:-1;
+			}
+
+			#panel_back {
+			    text-align:center;
+			    width: 40px;
+			    position: relative;
+			    right: 3px;
+			}
+			
+			#panel_forward {
+			    text-align:center;
+			    width: 40px;
+			    position: relative;
+			    right: 2px;
+			}
+			
+
+			
+			#starter_small {
+			    width: 58px;
+			    height: 25px;
+			    
+			    position: relative;
+			    right: 2px;
+			}
+			
+			.custom_graph_button, .insights_button, .device_center_button  {
+			    width: 151px;
+			    height: 25px;
+			    margin-top: 5px;
+			}
+			
+			.toggle_curtains_button {
+			    width: 151px;
+			    height: 25px;
+			    margin-top: 6px;
+			}
+			
+			.starter_button {
+			    width: 151px;
+			    height: 25px;
+			    margin-top: 6px;
+			    position: relative;
+			    right: 2px;
+			}
+			
+			/*   */
+			.date_dialog {
+			    width: 250px;
+			    opacity: 0;
+			    /*position: relative;
+			    bottom: 100px;*/
+			}
+			
+			
+			/*IMAGES*/
+			#bot_sidebar
+                        {
+                            position: absolute;
+                            bottom: -1px;
+			    right: 0px;
+                        }
+			#top_sidebar
+                        {
+                            position: absolute;
+                            top: 0px;
+			    right: 0px;
+                        }
+                        
+                        
+                    /*CSS WITHIN THE SELF-CONTAINED "LOG IN" DIV*/
+                        
+                        .login_box
+                        {
+				position: absolute;
+				left:278px;
+				top:15px;
+				width: 445px;
+				height: 45px;
+				z-index: 1;
+                            
+                        }
+                        
+                        #nameLogin
+                        {
+				position: absolute;
+				width: 140px;
+				height: 22px;
+				top: 0px;
+                            
+                        }
+                        
+                        #passwordLogin
+                        {
+				position: absolute;
+				left: 10px;
+				width: 140px;
+				height: 22px;
+				top: 0px;
+				left: 162px;
+                        }
+                        #imgLogin
+                        {
+				position: absolute;
+				padding-left: 25px;
+				left: 300px;
+				z-index:4
+			}
+			#imgLogout
+                        {
+				position: absolute;
+				padding-left: 25px;
+				opacity:1;
+				left: 300px;
+				top: -50px;
+				z-index:3;
+			}
+			#tempButton
+                        {
+				position: absolute;
+				
+				left: -100px;
+
+			}
+
+			/*  Ajax Loading  */
+			
+			/* Start by setting display:none to make this hidden.
+			Then we position it in relation to the viewport window
+			with position:fixed. Width, height, top and left speak
+			speak for themselves. Background we set to 80% white with
+			our animation centered, and no-repeating */
+			
+			.ajaxLoadingMask {
+			    display:    none;
+			    position:   fixed;
+			    z-index:    1000;
+			    top:        0;
+			    left:       0;
+			    height:     100%;
+			    width:      100%;
+			    background: rgba( 155, 155, 155, .8 ) 
+					url('http://www.comedysoftware.com/black/images/ajax-loader.gif') 
+					50% 50% 
+					no-repeat;
+			}
+			
+			/* When the body has the loading class, we turn
+			   the scrollbar off with overflow:hidden */
+			body.loading {
+			    overflow: hidden;   
+			}
+			
+
+		    /*PANELS*/
+		    
+			.panelsContainer
+			{
+			    position: absolute;
+			    top: 82px;
+			    right: 170px;
+			    height: 380px;
+			    z-index: 2;
+			    width: 100px;  /* Panels will overlow to the left and right of container */
+			}
+		    
+			.panelAttributes 
+			{
+			    width: 530px;
+			    height: 330px;
+			    /*background-color: #FFFFFF;*/
+			}
+			
+			.yAxisLabel {
+			    font-family: Verdana,Arial,sans-serif;
+			    font-size: 20px;
+			    position: absolute;
+			    left: 20px;
+			    top: 190px;
+			    -webkit-transform: rotate(-90deg); 
+			    -moz-transform: rotate(-90deg);	
+			}
+			
+			.panelbar-label-buttons {
+			    width: 100%;
+			    
+			    height: 42px;
+			    
+			}
+			
+			#panelbar-left {
+			    display: table;
+			    height: 42px;
+			    #position: relative;
+			    text-align:center;
+			    overflow: hidden;
+			    width: 250px;
+			    font-size: 1.1em;
+			    
+			}
+			#inPanelbar_int-left{
+			     #position: absolute;
+			     #top: 50%;
+			     display: table-cell;
+			     vertical-align: middle;
+			     
+			}
+			#inPanelbar-left{
+			    #position: relative;
+			    #top: -50%;
+			    width: 238px;
+			    margin-left: auto;
+			    margin-right: auto;
+			}
+			
+			#panelbar-right {
+			    position: absolute;
+			    top: 22px;
+			    right: 40px;
+			    
+			}
+			
+			#starterPanelOuter
+			{
+			    position: absolute;
+			    right: -35px;
+			}
+			
+			#starterPanelInner
+			{
+			    width: 590px;
+			    height: 330px;
+			}
+			
+			
+			#starterPanelIframe {
+			    width: 100%;
+			    height: 100%;
+			    overflow-x: hidden;
+			    overflow-y: hidden;
+			}
+
+			#customGraphPanelOuter, #insightsPanelOuter
+			{
+			    position: absolute;
+			    right: -35px;
+			}
+			
+			#customGraphPanelInner, #insightsPanelInner
+			{
+			    width: 590px;
+			    height: 330px;
+			}
+			
+			#customGraph-powerDraw, #customGraph-energyConsumption, #statsInsightsGraph
+			{
+			    width: 92%;
+			    height:325px;
+			    position: absolute;
+			    right: 18px;
+			    bottom: 16px;
+			    z-index: -10;
+			}
+			
+			.refresh {
+			    position: absolute;
+			    left: 22px;
+			    top: 248px;
+			}
+			
+			.date_selector {
+			    position: absolute;
+			    left:22px;
+			    top: 291px;
+			}
+			
+			.radio-range
+			{
+			    line-height: .9;
+			    font-size: 14px;
+			}
+			
+			.blue-padded
+			{
+			    color: #5c77b4;
+
+			}
+			
+			/*
+			.panelsContainer
+			{
+			    position: absolute;
+			    top: 80px;
+			    height: 380px;
+			    z-index: 2;
+			    width: 100%;
+			}
+		    
+			.starterPanel, .powerDraw, .energyConsumption, .panelAttributes
+			{
+			    width: 180px;
+			}
+			*/
+			
+			.graphContainer
+			{
+			    position: absolute;
+			    top: 55px;
+			    left: 25px;
+			    height: 300px;
+			    width: 325px;
+			}
+			
+			/*
+			#graphHolder
+			{
+				position: absolute;
+				background-color: #FFFFFF;
+				left: 200px;
+				top: 130px;
+				width: 400px;
+			}*/
+			
+			#reactView
+			{
+				position: absolute;
+				background-color: #FFFFFF;
+				left: 200px;
+				top: 130px;
+				width: 400px;
+			}
+			
+		/* LOADING BARS */
+		    .meter { 
+			height: 12px;  /* Can be anything */
+			position: relative;
+			margin: 0px 0 0px 0; /* Just for demo spacing */
+			background: #555;
+			-moz-border-radius: 25px;
+			-webkit-border-radius: 25px;
+			border-radius: 8px;
+			padding: 4px;
+			-webkit-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+			-moz-box-shadow   : inset 0 -1px 1px rgba(255,255,255,0.3);
+			box-shadow        : inset 0 -1px 1px rgba(255,255,255,0.3);
+		}
+		.meter > span {
+			display: block;
+			height: 100%;
+			   -webkit-border-top-right-radius: 8px;
+			-webkit-border-bottom-right-radius: 8px;
+			       -moz-border-radius-topright: 8px;
+			    -moz-border-radius-bottomright: 8px;
+			           border-top-right-radius: 8px;
+			        border-bottom-right-radius: 8px;
+			    -webkit-border-top-left-radius: 20px;
+			 -webkit-border-bottom-left-radius: 20px;
+			        -moz-border-radius-topleft: 20px;
+			     -moz-border-radius-bottomleft: 20px;
+			            border-top-left-radius: 20px;
+			         border-bottom-left-radius: 20px;
+			background-color: rgb(43,194,83);
+			background-image: -webkit-gradient(
+			  linear,
+			  left bottom,
+			  left top,
+			  color-stop(0, rgb(43,194,83)),
+			  color-stop(1, rgb(84,240,84))
+			 );
+			background-image: -moz-linear-gradient(
+			  center bottom,
+			  rgb(43,194,83) 37%,
+			  rgb(84,240,84) 69%
+			 );
+			-webkit-box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			-moz-box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			position: relative;
+			overflow: hidden;
+		}
+		.meter > span:after, .animate > span > span {
+			content: "";
+			position: absolute;
+			top: 0; left: 0; bottom: 0; right: 0;
+			background-image: 
+			   -webkit-gradient(linear, 0 0, 100% 100%, 
+			      color-stop(.25, rgba(255, 255, 255, .2)), 
+			      color-stop(.25, transparent), color-stop(.5, transparent), 
+			      color-stop(.5, rgba(255, 255, 255, .2)), 
+			      color-stop(.75, rgba(255, 255, 255, .2)), 
+			      color-stop(.75, transparent), to(transparent)
+			   );
+			background-image: 
+				-moz-linear-gradient(
+				  -45deg, 
+			      rgba(255, 255, 255, .2) 25%, 
+			      transparent 25%, 
+			      transparent 50%, 
+			      rgba(255, 255, 255, .2) 50%, 
+			      rgba(255, 255, 255, .2) 75%, 
+			      transparent 75%, 
+			      transparent
+			   );
+			z-index: 1;
+			-webkit-background-size: 50px 50px;
+			-moz-background-size: 50px 50px;
+			-webkit-animation: move 2s linear infinite;
+			   -webkit-border-top-right-radius: 8px;
+			-webkit-border-bottom-right-radius: 8px;
+			       -moz-border-radius-topright: 8px;
+			    -moz-border-radius-bottomright: 8px;
+			           border-top-right-radius: 8px;
+			        border-bottom-right-radius: 8px;
+			    -webkit-border-top-left-radius: 20px;
+			 -webkit-border-bottom-left-radius: 20px;
+			        -moz-border-radius-topleft: 20px;
+			     -moz-border-radius-bottomleft: 20px;
+			            border-top-left-radius: 20px;
+			         border-bottom-left-radius: 20px;
+			overflow: hidden;
+		}
+		
+		.animate > span:after {
+			display: none;
+		}
+		
+		@-webkit-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+		
+		.orange > span {
+			background-color: #f1a165;
+			background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
+			background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f1a165),color-stop(1, #f36d0a));
+			background-image: -webkit-linear-gradient(#f1a165, #f36d0a); 
+		}
+		
+		.red > span {
+			background-color: #f0a3a3;
+			background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
+			background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f0a3a3),color-stop(1, #f42323));
+			background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+		}
+		
+		.nostripes > span > span, .nostripes > span:after {
+			-webkit-animation: none;
+			background-image: none;
+		}
+			
+			
+		/* PANEL ELEMENTS (NOT ELEGANT, BUT IS CROSS BROWSER AND WORKS)  */
+			body.loading .modalLoading {
+			    display: block;
+			}
+		    					
+		    .outer {
+			position:relative;
+			float: left;
+			border: 1px solid hidden;
+		    }
+		    .inner {
+			border: 1px solid white;
+			background-color: #FFFFFF;
+			/*background-image:url('../../assets/img/loader-thin5.gif');
+			background-repeat:no-repeat;
+			background-position:center; */
+		    }
+		    .tl, .tm, .tr, .ml, .mr, .bl, .bm, .br {
+			border: 1px;
+			margin: 0;
+			padding: 0;
+		    }
+		    .tm, .bm, .tl, .tr, .bl, .br {
+			height: 16px
+		    }
+		    .tl, .tr, .bl, .br {
+			width: 16px
+		    }
+		    .tm, .bm {
+			height: 16px;
+			margin: 0 0px
+		    }
+		    .tm {
+			background-image:url('../../assets/img/gTop.png');
+			background-repeat:repeat-x;
+			margin: 0 16px
+		    }
+		    .bm {
+			    background-image:url('../../assets/img/gBot.png');
+			background-repeat:repeat-x;
+			margin: 0 16px
+		    }
+		    .tl {
+			    background-image:url('../../assets/img/gTopLeft.png');
+			position: absolute;
+			top: 0;
+			left: 0;
+		    }
+		    .tr {
+			    background-image:url('../../assets/img/gTopRight.png');
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 20px;
+		    }
+		    .bl {
+			    background-image:url('../../assets/img/gBotLeft.png');
+			position: absolute;
+			left: 0;
+		    }
+		    .br {
+			    background-image:url('../../assets/img/gBotRight.png');
+			position: absolute;
+			right: 0;
+			width: 20px;
+		    }
+		    .ml {
+			    background-image:url('../../assets/img/gLeft.png');
+			padding-left: 16px;
+			background-repeat:repeat-y
+		    }
+		    .mr {
+			    background-image:url('../../assets/img/gRight.png');
+			padding-right: 16px;
+			background-repeat:repeat-y;
+			background-position: 100% 0
+		    }
