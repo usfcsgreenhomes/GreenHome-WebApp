@@ -1,6 +1,6 @@
 // StatusView -------------------------------------------------- BEGIN // 
 
-  //VIEW: Home Data View
+  //VIEW: graphView
   var HomeDataView = Backbone.View.extend({
    
    el: $("#homeDataView"),
@@ -14,7 +14,11 @@
 	
     },
     
-
+    
+    //template: _.template($('#home-container-template').html()),
+    
+    //battery_template: _.template($('#battery-level').html()),
+    
     initialize: function() {
         
 	//TO CONTROL WHICH GRAPH/CONTROLS ARE IN FOCUS
@@ -31,6 +35,7 @@
 	userAppModel.on('devices_ready_event', this.render, this);
 	
 	userAppModel.on( "change:sidebarView", this.checkSidebar, this);
+	//userAppModel.on('insights_panel_event', this.checkSidebar, this);
         
         userAppModel.on('logged_out', this.reboot, this);  
         
@@ -140,7 +145,9 @@
 		  }
 		  else if (dataObject.success == true) {
 					
-					houseEnergy += dataObject.energyConsumptions[0].energyConsumed;
+					if(dataObject.energyConsuptions != undefined) {
+						houseEnergy += dataObject.energyConsumptions[0].energyConsumed;
+					}
 				    
 				    devEnCount++;
 				    

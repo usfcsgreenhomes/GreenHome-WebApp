@@ -17,6 +17,8 @@ var SessionView = Backbone.View.extend({
     },
     
     initialize: function() {
+				this.runOnce = true;
+				
                 // If the userModel's attributes are changed, this (session) View will rerender
                 userAppModel.on('change', this.render, this);
                 
@@ -81,6 +83,45 @@ var SessionView = Backbone.View.extend({
             if (!Devices.length) {
               this.set_user_devices();
               }
+			if (this.runOnce) {
+				jsonResponse = command_center("activity_get");
+				jsonResponse.success(function(dataObject) {
+					if(!dataObject.success) {
+						//alert("Error!");
+					} else {
+						var types = new Array();
+						var texts = new Array();
+						for(var i = 0; i < dataObject.activities.length; i++) {
+							var type = dataObject.activities[i].title.match(/^(entertainment|cooking|chores|work|other)/i);
+							if(type != null && type.length != 0) {
+								switch(type[0].toLowerCase()){
+									case "entertainment":
+										types.push(0);
+									break;
+								case "cooking":
+									types.push(1);
+									break;
+								case "chores":
+									types.push(2);
+									break;
+								case "work":
+									types.push(3);
+									break;
+								case "other":
+									types.push(4);
+									break;
+								}
+								var act = dataObject.activities[i].title;
+								act = act.replace(/^[^:]+\s+:\s+(.+)/,"$1");	
+								texts.push({label:act, i:texts.length});
+							}
+						}
+						userAppModel.set({activities:{types: types, texts: texts}}, {silent: true});
+						
+					}
+				});
+				this.runOnce = false;
+			}
       }
     },
     
@@ -117,13 +158,10 @@ var SessionView = Backbone.View.extend({
       //console.log('pushing creds');
       if (e.keyCode != 13) return;
       if (!this.name.val() && !this.password.val()) return;
-      this.pushCreds(this);
-      this.name.val('');
-      this.password.val('');
+		this.startSession();
     },
     
     temp_button: function(){
-	//console.log("button pushed");
 	userAppModel.trigger('special_event_call');
 
     },
@@ -148,7 +186,9 @@ var SessionView = Backbone.View.extend({
     },
     
     startSession: function() {
-	this.pushCreds(this);
+	  this.pushCreds(this);
+      this.name.val('');
+      this.password.val('');	
     },
     
     // ---- API Handling Functions, updating models, setting cookies, etc. ---- //
@@ -173,9 +213,53 @@ var SessionView = Backbone.View.extend({
             }
             else if (data_unique.success == true) {   //  && check for error message
                 //console.log('passing: ' + data_unique);
+				
                 thisView.parse_set_cookie(data_unique);   //SET TWO COOKIES, USER (VALUE = USERNAME), SESSION (VALUE = TOKENID)
                 thisView.model.setAndSave(data_unique);  //The set() will trigger a change event, which will call this View's render function
-                }
+
+
+
+
+				jsonResponse = command_center("activity_get");
+				jsonResponse.success(function(dataObject) {
+					if(!dataObject.success) {
+						//alert("Error!");
+					} else {
+						var types = new Array();
+						var texts = new Array();
+						for(var i = 0; i < dataObject.activities.length; i++) {
+							var type = dataObject.activities[i].title.match(/^(entertainment|cooking|chores|work|other)/i);
+							if(type != null && type.length != 0) {
+								switch(type[0].toLowerCase()){
+									case "entertainment":
+										types.push(0);
+									break;
+								case "cooking":
+									types.push(1);
+									break;
+								case "chores":
+									types.push(2);
+									break;
+								case "work":
+									types.push(3);
+									break;
+								case "other":
+									types.push(4);
+									break;
+							}
+							
+							var act = dataObject.activities[i].title;
+							act = act.replace(/^[^:]+\s+:\s+(.+)/,"$1");
+							$("#listbox").append("<option>"+act+"</option>\n");
+							
+							texts.push({label:act, i:texts.length});
+							}
+						}
+						userAppModel.set({activities:{types: types, texts: texts}}, {silent: true});
+						
+					}
+				});
+             }
             else {
                     alert("Unable to start session, server problems for " + username);
                 }
@@ -186,8 +270,8 @@ var SessionView = Backbone.View.extend({
       // jsonFromPHP = window.globalPass;  // **** Quick Fix for a bug
         //SETTING TWO COOKIES, MIMICKING THE GREENHOME API PLAYGROUND BEHAVIOR
         var thedate=new Date(jsonFromPHP.expiration);
-        
-        myExpiration = thedate.getUTCMilliseconds();
+		
+        myExpiration = thedate;
         myUsername = jsonFromPHP.currentUser.username;
         myToken = jsonFromPHP.token;
 
@@ -225,9 +309,12 @@ var SessionView = Backbone.View.extend({
 		    if(dataObject.devices[index].name != undefined || dataObject.devices[index].name != ''){
 			device = new deviceModel({bulk:dataObject.devices[index]}); // the initialize/constructor of this model handles parsing thisdevice.set();   
 				  //console.log("Device collectionFlag before add" + device.get('collectionFlag'));
-			Devices.add(device);
+			if(device.get('onBool')!=undefined){
+			    Devices.add(device);
 				  //console.log("Device after add collectionFlag " + device.get('collectionFlag'));                    
-			$("#collectionContents").append("Item added to Devices (collection): " + device.get('name') + "? " + device.get('collectionFlag') + "<br/>");
+			    $("#collectionContents").append("Item added to Devices (collection): " + device.get('name') + "? " + device.get('collectionFlag') + "<br/>");
+			}
+			
 		    }
                     index++;   
                 }

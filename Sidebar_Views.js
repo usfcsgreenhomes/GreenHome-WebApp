@@ -19,6 +19,7 @@
       this.model.bind('change', this.render, this);
       this.model.bind('destroy', this.remove, this);
       
+		$("#insightsView").css("visibility", "hidden");
       //console.log('Tab View hello! ' +  this.model.get('name'));
       
       _.bindAll(this,"render");
@@ -185,6 +186,7 @@ var SidebarView = Backbone.View.extend({
 	    
 	    //generic actions
 	    $(this.panelButtons).show();
+		
 	    this.$el.html(this.template());
 	    
 	    $('#panel_back').button();
@@ -209,8 +211,8 @@ var SidebarView = Backbone.View.extend({
                 index = 0;
                 while (index < Devices.length)
                 {
-		  // Add a single tab item to the list by creating a view for it, and
-		// appending its element to the `<ul>`.
+		  			// Add a single tab item to the list by creating a view for it, and
+					// appending its element to the `<ul>`.
                     this.add_one(Devices.at(index));
                     index++;
                 }
@@ -286,7 +288,7 @@ var SidebarView = Backbone.View.extend({
         // appending its element to the `<ul>`.
         add_one: function(device, index_) {
           var tabview = new SidebarTabView({model: device});
-	  //this next line is not very nice -- it should be part of the DOM's template, added to the todo list
+	 	 //this next line is not very nice -- it should be part of the DOM's template, added to the todo list
           $('#accordion').append('<h3 class="dev_selector"><a id="device_select" class="' + device.get('id') + '">' + device.get('name') + '</a></h3>');
           $('#accordion').append(tabview.render());
 
@@ -637,6 +639,7 @@ var SidebarView = Backbone.View.extend({
 	  userAppModel.set({'sidebarView':'Insights'});
 	  userAppModel.save();
 	  userAppModel.trigger('insights_panel_event');
+		$("#insightsView").css("visibility", "");
 	  this.render();
 	  
 	},

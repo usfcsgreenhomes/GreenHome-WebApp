@@ -32,25 +32,32 @@ var deviceModel = Backbone.Model.extend({
         //This deviceModel will be instantiated like so:  device = new deviceModel({bulk: infoFromApi});
         
       if(this.get("bulk") != {}) {
+        if(this.get('bulk').name!=undefined && this.get('bulk').name!=''){
+            this.set({"name":this.get('bulk').name, 'currentStatus':this.get('bulk').currentStatus, 'id':this.get('bulk').id, 'location':this.get('bulk').location, 'meterSupplyingPower':this.get('bulk').meterSupplyingPower, 'onOff':this.get('bulk').onOff, 'meterPluggedIn':this.get('bulk').meterPluggedIn,'udid':this.get('bulk').udid});  //'onOff':this.get('bulk').onOff - - not necessary considering the Actions collection holds more comprehensive info
+            
+            if(this.get("bulk").onOff != undefined) {
+                
+                //First, calculate the displayed On Off state of device, given what we know
+                if(this.get("bulk").onOff.latest != undefined) {
+                    var onBool = this.get("bulk").onOff.latest.value;
+                } else if (this.get("bulk").currentStatus!=undefined && this.get("bulk").meterSupplyingPower == true && this.get("bulk").currentStatus.powerDraw != 0) {  //If that object is undefined, we construct the best guess
+                    var onBool = true;
+                } else if (this.get("bulk").meterSupplyingPower == true ) {
+                    var onBool = true;
+                } else {
+                    var onBool = false;
+                }
+                this.set({'onBool': onBool});
+            } else {
+                
+                this.set({'onBool': false});
+            }
         
-        //First, calculate the displayed On Off state of device, given what we know
-        if(this.get("bulk").onOff.latest.value != undefined) {
-            var onBool = this.get("bulk").onOff.latest.value;
-        } else if (this.get("bulk").meterSupplyingPower == true && this.get("bulk").currentStatus.powerDraw != 0) {  //If that object is undefined, we construct the best guess
-            var onBool = true;
-        } else if (this.get("bulk").meterSupplyingPower == true ) {
-            var onBool = true;
-        } else {
-            var onBool = false;
-        }
+            this.set({'bulk':{}});   //remove superficial object
         
-        this.set({"name":this.get('bulk').name, 'currentStatus':this.get('bulk').currentStatus, 'id':this.get('bulk').id, 'onBool': onBool , 'location':this.get('bulk').location, 'meterSupplyingPower':this.get('bulk').meterSupplyingPower, 'onOff':this.get('bulk').onOff, 'meterPluggedIn':this.get('bulk').meterPluggedIn,'udid':this.get('bulk').udid});  //'onOff':this.get('bulk').onOff - - not necessary considering the Actions collection holds more comprehensive info
-        
-        //console.log("Device name " + this.get('name'));
-        
-        this.set({'bulk':{}});   //remove superficial object
-
       }
+      } else
+      {return false;}
 
     },
     

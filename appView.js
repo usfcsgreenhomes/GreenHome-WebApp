@@ -17,7 +17,6 @@ var appView = Backbone.View.extend({
 	    
         //Look to local storage for an existing user model
 	savedUser_instance.fetch();
-                
               ////console.log('instantiating the session View from the App View');
             
         //INSTANTIATE THE USER MODEL INSTANCE  --
@@ -55,6 +54,9 @@ var appView = Backbone.View.extend({
 		userAppModel.set({'leftPanelCollection':{}, 'rightPanelCollection':{}});
 		
 		userAppModel.set({'midPanelCollection':{"deviceName":"starterPanel", "deviceId":-1}});
+		
+
+		//userAppModel.set({
 		
 		
 		//       GLOBAL EVENT CENTER       //  (Sounds like trouble right? Let's try calling it this then:)

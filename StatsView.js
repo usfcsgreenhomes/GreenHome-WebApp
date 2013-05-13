@@ -331,18 +331,32 @@
 	    }
 	    avgEnergy = energyTotal / hourly2WkData.statuses.length;
 	    //console.log('energyTotal ' );
-	    
-	    var dayPeak = new Date(sortedStatuses[hourly2WkData.statuses.length-1].timestamp);
-	    var dayLow = new Date(sortedStatuses[0].timestamp);
+	   
+		var dayPeak = new Date();
+		var peak = 0;
+		if(sortedStatuses[hourly2WkData.statuses.length-1]) {
+	    	dayPeak = new Date(sortedStatuses[hourly2WkData.statuses.length-1].timestamp);
+			peak = sortedStatuses[hourly2WkData.statuses.length-1].seriesDataType.toFixed(4);
+		}
+		var dayLow = new Date();
+		var low = 0;
+		if(sortedStatuses[0]) {
+	    	dayLow = new Date(sortedStatuses[0].timestamp);
+			low = sortedStatuses[0].seriesDataType.toFixed(4);
+		}
+		var median = 0;
+		if(sortedStatuses[parseInt(sortedStatuses.length/2)]) {
+			median = sortedStatuses[parseInt(sortedStatuses.length/2)].seriesDataType.toFixed(4);
+		}
 	    
 	    ////console.log('date: ' + new Date(sortedStatuses[0].timestamp).toDateString);
 	                
 	    $('#DayPeakString').html(dayPeak.toDateString());
-	    $('#PeakValueString').html(sortedStatuses[hourly2WkData.statuses.length-1].seriesDataType.toFixed(4));
+	    $('#PeakValueString').html(peak);
 	    $('#DayLowString').html(dayLow.toDateString());
-	    $('#LowValueString').html(sortedStatuses[0].seriesDataType.toFixed(4));
+	    $('#LowValueString').html(low);
 	    $('#AvgValueString').html(avgEnergy.toFixed(2));
-	    $('#MedianValueString').html(sortedStatuses[parseInt(sortedStatuses.length/2)].seriesDataType.toFixed(4));
+	    $('#MedianValueString').html(median);
 	    
         },
 
@@ -493,8 +507,12 @@
             mx = 0;
             my = 0;   
             for (i=0;i<n;i++) {
+				if(x[i]) {
                mx += x[i].seriesDataType;
+			   	}
+				if(y[i]) {
                my += y[i].seriesDataType;
+			   	}
             }
             mx /= n;
             my /= n;
@@ -506,8 +524,12 @@
             sx = 0;
             sy = 0;
             for (i=0;i<n;i++) {
+				if(x[i]) {
                sx += (x[i].seriesDataType - mx) * (x[i].seriesDataType - mx);
+			   	}
+				if(y[i]) {
                sy += (y[i].seriesDataType - my) * (y[i].seriesDataType - my);
+			   	}
             }
             denom = Math.sqrt(sx*sy);
          

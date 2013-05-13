@@ -1,0 +1,60 @@
+5/13/2013 spar2
+
+For general architecture understanding, see the former readme
+
+To enable anomalies, uncomment lines 580 to 596 of Panel_View.js, then remove lines 598 to 628 (these lines contain the fake data to graph)
+
+New files:
+- BrowserSupport.js - fixes compatibility issues with IE
+- assets/js/jquery.flot.regions.js - flot plugin that draws anomalies
+
+Major changes:
+- ApiCommands.js - major cleaning and re-writing of portions
+- Panel_Views.js - major changes to all_devices_graph_render, to add new functionality to all devices panel, minor changes other places such as handling events from graphs - tooltips, zooming/selection
+
+Minor changes:
+- index.php - added necessary divs and script tags for new features
+- userModel.js - added activities to the user model that is cached on users' machines - this reduces the need to call the activities api
+- Dcss.css - added some css rules for the activities dialog
+
+
+
+
+ApiCommands.js new commands
+-----------------
+Api commands now has a few new commands
+- anomaly - 'from' and 'to' parameters must be specified - these timestamps are needed by the api to return only anomalies between the two times
+- activity - 'timestamp' 'activity' 'new'. If 'new' is true, timestamp should not be specified. This api is used to send new activity types as well as new instances of existing activity types
+- activity_get - no parameters, this will return a list of activities for the user currently logged in
+- activity_time 'from' and 'to' parameters must be specified - these timestamps are needed to return only data between the two times
+
+
+
+Panel_Views.js major changes
+-----------------
+This file has had the bulk of the changes.
+- Added activities dialog
+- Added a lot of jqueryui setup stuff for the activities dialog when the 'all devices' graph is drawn
+- Re-wrote the legend of the 'all devices' graph to not take up space on the actual graph
+- Zoom now zooms in, but also asynchronously loads higher-resolution data to repopulate the graph with - also works with individual device graphs
+- Activities, anomalies and data are now loaded asynchronously when the 'all devices' graph is drawn
+- The legend for 'all devices' includes the ability to toggle individual activity types
+- The legend for 'all devices' will hide any device without datapoint with a non-zero y value for the time period it is graphing
+- Added anomalies to 'all devices'
+- Lots of other minor changes
+
+
+
+jquery.flot.regions.js usage
+-----------------
+To use the regions plugin, a series should have an array named 'regions' as a datamember. If regions is null, the regions plugin code will not be invoked. If regions is non-null, the plugin will draw the series as a line, even if regions is empty. The regions array should have 0 or more objects with the following structure:
+
+{
+	x1: the lesser x value of the region,
+	x2: the greater x value of the region,
+	color: the color to shade the region, as well as the line above the region
+}
+
+If the regions objects are not formated with those fields, the behavior is undefined.
+
+This plugin is not particularly customizable, it was built with the one purpose in mind of drawing the regions. It mimics the shadowing effect the flot default lines graphing does, however it is not nearly as customizable. This plugin is a little bit hacky, but it's better to use this plugin than the alternative of splitting each series into 2 or more series per anomaly, or actually modifying flot.js directly. It is commented fairly well and isn't particularly complex if changes must be made.

@@ -1,10 +1,11 @@
 <?php
 //USER SANITIZATION
 function cleanUserInput($input) {
-    //this function sanitizes user input for mysql security reasons
+	//this function sanitizes user input for mysql security reasons
     
-    $input = htmlentities($input);
-    return $input; }
+	$input = htmlentities($input);
+	return $input;
+}
 
 //THIS IS GENERALIZED PROXY CODE for handling POSTs to the server
 
